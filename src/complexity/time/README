@@ -1,0 +1,37 @@
+참고 사이트는 요깁니다
+알고리즘 정의
+
+https://namu.wiki/w/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+
+빅오 표기법
+
+https://joshuajangblog.wordpress.com/2016/09/21/time_complexity_big_o_in_easy_explanation/
+
+저희가 다룰 알고리즘은 <<문제를 해결하기 위한 절차나 방법이며 보통 반복되는 문제를 풀기 위한 작은 프로시저(진행절차)를 의미>> 와 가깝다고 보셔도 될거같아용
+
+하지만 단순히 문제를 해결하기보다는 저희는 컴퓨터의 시간과 메모리 두 자원을 효율적으로 쓰는 방법으로 풀고싶으니까
+
+이번 문제에서는 복잡도를 고려해보려고 합니다
+
+복잡도는 시간 복잡도와 공간복잡도가 있는데
+시간 복잡도의 개념은 요 스크린샷으로 이해해주시면 되겠습니다
+
+------------------------------------------------------------------
+
+문제
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+You may assume no duplicate exists in the array.
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+입력 예시
+Example 1: Input: nums = [4,5,6,7,0,1,2], target = 0
+Example 2: Input: nums = [4,5,6,7,0,1,2], target = 3
+
+출력 예시
+Example 1: Output: 4
+Example 2: Output: -1
