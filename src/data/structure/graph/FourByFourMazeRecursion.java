@@ -66,8 +66,8 @@ public class FourByFourMazeRecursion {
 		}
 	}
 
-	// https://www.youtube.com/watch?v=m6lXDsx7oCk를 참고해서 이래저래 고민해보았지만, 아래 코드로 하면 동떨어진 애들까지 커버할 수 없어서
-	// 이 코드안에서는 해결이 안되고 question clone 후 짜넣어야된다
+	// https://www.youtube.com/watch?v=m6lXDsx7oCk를 참고해서 이래저래 고민해보았지만,
+	// 아래 코드로 하면 동떨어진 애들까지 커버할 수 없어서 이 코드안에서는 해결이 안되고 visited한걸 출력 때 정리한다
 	static boolean findPath(int row, int col) {
 		if (row < 0 || col < 0 || row >= ROWS || col >= COLS) {
 			return false; //is wall
