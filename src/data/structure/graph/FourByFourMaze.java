@@ -1,4 +1,4 @@
-package data.structure.bfs;
+package data.structure.graph;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -34,21 +34,7 @@ import java.util.function.Function;
  * 조건에서 길이 무조건 하나면 좌수법 우수법
  * 다익스트라
  */
-//todo Builder로 교체
-class Maze {
-	int row;
-	int col;
-	char val;
-	boolean visited;
-
-	public Maze() {
-	}
-}
-
-public class
-FourByFourMaze {
-	static final int ROWS = 4;
-	static final int COLS = 4;
+public class FourByFourMaze extends Maze{
 	static Stack<Maze> stack = new Stack();
 	static ArrayList<Maze> mazeList = new ArrayList();
 
@@ -80,16 +66,16 @@ FourByFourMaze {
 
 	static void find(Maze target) {
 
-		if (CheckType.FIRST.func.apply(target)) {
+		if (CheckType.FIRST.getFunc().apply(target)) {
 			target.visited = true;
 			stack.push(target);
 			find(target);
 		} else {
-			if (CheckType.LAST.func.apply(target)) {
+			if (CheckType.LAST.getFunc().apply(target)) {
 				print();
 			} else {
 				for (Maze maze : mazeList) {
-					if (CheckType.CARDINAL_POSITION.biFunc.apply(maze, target)) {
+					if (CheckType.CARDINAL_POSITION.getBiFunc().apply(maze, target)) {
 						//되돌아왔을때 pop됨
 						if (stack.peek() != target) {
 							stack.push(target);
@@ -127,26 +113,5 @@ FourByFourMaze {
 		}
 		//todo 재귀를 바꾸든가해야지...
 		System.exit(0);
-	}
-
-	public enum CheckType {
-		FIRST(maze -> maze.row == 0 && maze.col == 0 && maze.visited == false),
-		LAST(maze -> maze.row == ROWS - 1 && maze.col == COLS - 1),
-		CARDINAL_POSITION((maze, target) -> maze.visited == false && maze.val == '1'
-				&& ((target.row == maze.row - 1 && target.col == maze.col)
-				|| (target.row == maze.row && target.col == maze.col - 1)
-				|| (target.row == maze.row + 1 && target.col == maze.col)
-				|| (target.row == maze.row && target.col == maze.col + 1)));
-
-		private Function<Maze, Boolean> func;
-		private BiFunction<Maze, Maze, Boolean> biFunc;
-
-		CheckType(Function<Maze, Boolean> func) {
-			this.func = func;
-		}
-
-		CheckType(BiFunction<Maze, Maze, Boolean> biFunc) {
-			this.biFunc = biFunc;
-		}
 	}
 }

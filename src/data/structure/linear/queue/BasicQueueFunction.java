@@ -1,4 +1,4 @@
-package data.structure.linear;
+package data.structure.linear.queue;
 
 public class BasicQueueFunction extends Queue implements QueueFunction {
 

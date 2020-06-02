@@ -1,7 +1,7 @@
-package data.structure.linear.two;
+package data.structure.linear.queue.two;
 
-import data.structure.linear.factory.TypeStackFactory;
-import data.structure.linear.factory.StackTypeA;
+import data.structure.linear.queue.factory.TypeStackFactory;
+import data.structure.linear.queue.factory.StackTypeA;
 
 import java.util.Scanner;
 

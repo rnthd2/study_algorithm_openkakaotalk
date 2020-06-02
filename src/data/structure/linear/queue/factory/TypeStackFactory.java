@@ -1,4 +1,4 @@
-package data.structure.linear.factory;
+package data.structure.linear.queue.factory;
 
 /**
  * 문제에 따른 stack 생성

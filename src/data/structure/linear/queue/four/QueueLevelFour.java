@@ -1,4 +1,4 @@
-package data.structure.linear.four;
+package data.structure.linear.queue.four;
 
 import java.util.ArrayList;
 

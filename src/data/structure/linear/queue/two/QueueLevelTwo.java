@@ -1,6 +1,6 @@
-package data.structure.linear.two;
+package data.structure.linear.queue.two;
 
-import data.structure.linear.BasicQueueFunction;
+import data.structure.linear.queue.BasicQueueFunction;
 
 import java.util.ArrayList;
 import java.util.Scanner;

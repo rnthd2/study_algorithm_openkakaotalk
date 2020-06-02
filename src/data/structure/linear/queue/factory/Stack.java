@@ -1,4 +1,4 @@
-package data.structure.linear.factory;
+package data.structure.linear.queue.factory;
 
 public abstract class Stack<T> {
 	public abstract T getStack();

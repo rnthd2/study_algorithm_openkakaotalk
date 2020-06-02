@@ -1,4 +1,4 @@
-package data.structure.linear.factory;
+package data.structure.linear.queue.factory;
 
 /**
  * 언바운드 와일드카드 타입(Unbounded wildcard type)

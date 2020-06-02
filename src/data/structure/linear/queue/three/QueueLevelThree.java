@@ -1,4 +1,4 @@
-package data.structure.linear.three;
+package data.structure.linear.queue.three;
 
 import java.util.ArrayList;
 
