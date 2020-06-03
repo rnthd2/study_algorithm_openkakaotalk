@@ -1,34 +1,5 @@
 package data.structure.graph;
 
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentSkipListSet;
-
-/**
- * 4*4 미로에서 출발점(1,1)에서 도착점(4,4)까지로의 경로를 출력하는 프로그램을 작성하십시오.
- * <p>
- * 입력
- * 길을 1, 벽을 0으로 4*4 정사각형 꼴로 입력합니다.
- * 단, 출발점부터 도착점까지의 길은 하나밖에 없습니다.
- * <p>
- * 출력
- * 출발점부터 도착점까지 미로를 헤매지 않고 이동하는 경로를 정사각형 위에 1로 표현
- * <p>
- * 예시
- * <p>
- * 입력
- * 1 1 0 1
- * 0 1 1 1
- * 0 0 0 1
- * 0 1 0 1
- * <p>
- * 출력
- * 1 1 0 0
- * 0 1 1 1
- * 0 0 0 1
- * 0 0 0 1
- * https://level.goorm.io/exam/43131/4x4-%EB%AF%B8%EB%A1%9C%EC%B0%BE%EA%B8%B0/quiz/1
- * <p>
- */
 public class FourByFourMazeRecursion {
 
 	static final int ROWS = 4;

@@ -1,12 +1,18 @@
-package data.structure.linear.queue;
+package data.structure.graph;
 
-public class BasicQueueFunction extends Queue implements QueueFunction {
+import data.structure.linear.queue.Queue;
+import data.structure.linear.queue.QueueFunction;
 
-	public BasicQueueFunction() {
+public class FourByFourMazeQueueFunction extends Queue implements QueueFunction {
+
+	private static int row;
+	private static int col;
+
+	public FourByFourMazeQueueFunction() {
 		super(new Builder());
 	}
 
-	public BasicQueueFunction(int size) {
+	public FourByFourMazeQueueFunction(int size) {
 		super(new Builder(size));
 	}
 
@@ -50,5 +56,21 @@ public class BasicQueueFunction extends Queue implements QueueFunction {
 
 	public boolean isEmpty() {
 		return queue.isEmpty() ? true : false;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		FourByFourMazeQueueFunction.row = row;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	public void setCol(int col) {
+		FourByFourMazeQueueFunction.col = col;
 	}
 }

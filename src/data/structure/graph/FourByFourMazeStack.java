@@ -1,42 +1,20 @@
 package data.structure.graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Stack;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-/**
- * 4*4 미로에서 출발점(1,1)에서 도착점(4,4)까지로의 경로를 출력하는 프로그램을 작성하십시오.
- * <p>
- * 입력
- * 길을 1, 벽을 0으로 4*4 정사각형 꼴로 입력합니다.
- * 단, 출발점부터 도착점까지의 길은 하나밖에 없습니다.
- * <p>
- * 출력
- * 출발점부터 도착점까지 미로를 헤매지 않고 이동하는 경로를 정사각형 위에 1로 표현
- * <p>
- * 예시
- * <p>
- * 입력
- * 1 1 0 1
- * 0 1 1 1
- * 0 0 0 1
- * 0 1 0 1
- * <p>
- * 출력
- * 1 1 0 0
- * 0 1 1 1
- * 0 0 0 1
- * 0 0 0 1
- * https://level.goorm.io/exam/43131/4x4-%EB%AF%B8%EB%A1%9C%EC%B0%BE%EA%B8%B0/quiz/1
- * <p>
- * bfs나 dfs 알고리즘
- * a*
- * 조건에서 길이 무조건 하나면 좌수법 우수법
- * 다익스트라
- */
-public class FourByFourMaze extends Maze{
-	static Stack<Maze> stack = new Stack();
-	static ArrayList<Maze> mazeList = new ArrayList();
+//DFS 풀이
+class StackMaze extends Maze{
+	int row;
+	int col;
+	char val;
+	boolean visited;
+}
+public class FourByFourMazeStack extends Maze{
+	static Stack<StackMaze> stack = new Stack();
+	static ArrayList<StackMaze> mazeList = new ArrayList();
 
 	public static void main(String[] args) {
 		//		Scanner sc = new Scanner(System.in);
@@ -50,7 +28,7 @@ public class FourByFourMaze extends Maze{
 			;
 			//			String str = sc.nextLine();
 			for (int col = 0; col < COLS; col++) {
-				Maze maze = new Maze();
+				StackMaze maze = new StackMaze();
 				maze.row = row;
 				maze.col = col;
 				maze.val = str.charAt(col);
@@ -64,7 +42,7 @@ public class FourByFourMaze extends Maze{
 		find(mazeList.get(0));
 	}
 
-	static void find(Maze target) {
+	static void find(StackMaze target) {
 
 		if (CheckType.FIRST.getFunc().apply(target)) {
 			target.visited = true;
@@ -74,7 +52,7 @@ public class FourByFourMaze extends Maze{
 			if (CheckType.LAST.getFunc().apply(target)) {
 				print();
 			} else {
-				for (Maze maze : mazeList) {
+				for (StackMaze maze : mazeList) {
 					if (CheckType.CARDINAL_POSITION.getBiFunc().apply(maze, target)) {
 						//되돌아왔을때 pop됨
 						if (stack.peek() != target) {
@@ -94,10 +72,10 @@ public class FourByFourMaze extends Maze{
 
 	//Stack을 출력
 	static void print() {
-		Maze[] stackList = stack.toArray(new Maze[stack.size()]);
+		StackMaze[] stackList = stack.toArray(new StackMaze[stack.size()]);
 		String[][] result = new String[ROWS][COLS];
 
-		for (Maze maze : stackList) {
+		for (StackMaze maze : stackList) {
 			result[maze.row][maze.col] = maze.val + " ";
 		}
 
@@ -113,5 +91,35 @@ public class FourByFourMaze extends Maze{
 		}
 		//todo 재귀를 바꾸든가해야지...
 		System.exit(0);
+	}
+}
+
+enum CheckType {
+
+	FIRST(maze -> maze.row == 0 && maze.col == 0 && maze.visited == false),
+	LAST(maze -> maze.row == Maze.ROWS - 1 && maze.col == Maze.COLS - 1),
+	CARDINAL_POSITION((maze, target) -> maze.visited == false && maze.val == '1'
+			&& ((target.row == maze.row - 1 && target.col == maze.col)
+			|| (target.row == maze.row && target.col == maze.col - 1)
+			|| (target.row == maze.row + 1 && target.col == maze.col)
+			|| (target.row == maze.row && target.col == maze.col + 1)));
+
+	private Function<StackMaze, Boolean> func;
+	private BiFunction<StackMaze, StackMaze, Boolean> biFunc;
+
+	CheckType(Function<StackMaze, Boolean> func) {
+		this.func = func;
+	}
+
+	CheckType(BiFunction<StackMaze, StackMaze, Boolean> biFunc) {
+		this.biFunc = biFunc;
+	}
+
+	public Function<StackMaze, Boolean> getFunc() {
+		return func;
+	}
+
+	public BiFunction<StackMaze, StackMaze, Boolean> getBiFunc() {
+		return biFunc;
 	}
 }
