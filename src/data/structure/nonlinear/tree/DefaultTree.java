@@ -16,42 +16,36 @@ public class DefaultTree {
 			if (parentEle < 0) {
 				root = new Node(null, i);
 			} else {
-				Node parentNode = findNodeByElement(parentEle);
-				Node node = new Node(parentNode, i);
-				parentNode.getChildren().add(node);
+				Node parentNode = findNodeByNodeAndElement(root, parentEle);
+				addNode(parentNode, i);
 			}
 		}
-		Object removeNum = 2;
-		Node removeNode = findNodeByElement(removeNum);
+
+		removeNodeByNumber(2);
+
+		System.out.println(findLeafNode(root).size());
+	}
+
+	static void addNode(Node parentNode, Object element){
+		Node node = new Node(parentNode, element);
+		parentNode.getChildren().add(node);
+	}
+
+	static void removeNodeByNumber(int num){
+		Node removeNode = findNodeByNodeAndElement(root, num);
 		root.getChildren().remove(removeNode);
-
-		int leafNodeNum = findLeafNode(root).size();
-		System.out.println(leafNodeNum);
 	}
 
-	static Node findNodeByElement(Object element) {
-		if(root.getElement() == element) return root;
-		else {
-			for (Node child : root.getChildren()) {
-				Node findNode = findNodeByNodeAndElement(child, element);
-				if (findNode != null) {
-					return findNode;
-				}
+	static Node findNodeByNodeAndElement(Node node, Object element){
+		Node findNode = null;
+		for (Node child : node.getChildren()) {
+			if(child.getElement() == element) {
+				findNode = child;
+			} else {
+				findNodeByNodeAndElement(child, element);
 			}
 		}
-		return null;
-	}
-	static Node findNodeByNodeAndElement(Node node, Object element) {
-		if(node.getElement() == element) return node;
-		else {
-			for (Node child : node.getChildren()) {
-				if(child.getElement() == element) return child;
-				else{
-					return findNodeByNodeAndElement(child, element);
-				}
-			}
-		}
-		return null;
+		return findNode;
 	}
 
 	static ArrayList<Node> findLeafNode(Node node) {
