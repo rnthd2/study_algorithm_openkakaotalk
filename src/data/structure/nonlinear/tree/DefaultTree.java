@@ -4,42 +4,61 @@ import java.util.ArrayList;
 
 public class DefaultTree {
 	static ArrayList<Node> leafNodeList = new ArrayList<>();
+	static Node root = null;
 
 	public static void main(String[] args) {
-		//create root node
-		Node root = new Node(null);
+		int n = 5;
+		String str = "-1 0 0 1 1";
+		String[] list = str.split(" ");
 
-		//stage 2
-		Node node1 = new Node(root);
-		root.getChildren().add(node1);
+		for (int i = 0; i < n; i++) {
+			int parentEle = Integer.valueOf(list[i]);
+			if (parentEle < 0) {
+				root = new Node(null, i);
+			} else {
+				Node parentNode = findNodeByElement(parentEle);
+				Node node = new Node(parentNode, i);
+				parentNode.getChildren().add(node);
+			}
+		}
+		Object removeNum = 2;
+		Node removeNode = findNodeByElement(removeNum);
+		root.getChildren().remove(removeNode);
 
-		//stage 3
-		Node node2 = new Node(root);
-		root.getChildren().add(node2);
-
-		//stage 4
-		Node node3 = new Node(node1);
-		node1.getChildren().add(node3);
-
-		//stage 5
-		Node node4 = new Node(node1);
-		node1.getChildren().add(node4);
-
-		//stage 6(node2 remove)
-		root.getChildren().remove(node2);
-
-		//stage 7
 		int leafNodeNum = findLeafNode(root).size();
 		System.out.println(leafNodeNum);
 	}
 
-	static ArrayList<Node> findLeafNode(Node node){
-
-		for (Node child : node.getChildren()) {
-			if(child.getChildren().size() < 1){
-				leafNodeList.add(child);
+	static Node findNodeByElement(Object element) {
+		if(root.getElement() == element) return root;
+		else {
+			for (Node child : root.getChildren()) {
+				Node findNode = findNodeByNodeAndElement(child, element);
+				if (findNode != null) {
+					return findNode;
+				}
 			}
-			else{
+		}
+		return null;
+	}
+	static Node findNodeByNodeAndElement(Node node, Object element) {
+		if(node.getElement() == element) return node;
+		else {
+			for (Node child : node.getChildren()) {
+				if(child.getElement() == element) return child;
+				else{
+					return findNodeByNodeAndElement(child, element);
+				}
+			}
+		}
+		return null;
+	}
+
+	static ArrayList<Node> findLeafNode(Node node) {
+		for (Node child : node.getChildren()) {
+			if (child.getChildren().size() < 1) {
+				leafNodeList.add(child);
+			} else {
 				findLeafNode(child);
 			}
 		}
