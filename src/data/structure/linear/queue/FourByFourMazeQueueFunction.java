@@ -1,7 +1,4 @@
-package data.structure.graph;
-
-import data.structure.linear.queue.Queue;
-import data.structure.linear.queue.QueueFunction;
+package data.structure.linear.queue;
 
 public class FourByFourMazeQueueFunction extends Queue implements QueueFunction {
 
