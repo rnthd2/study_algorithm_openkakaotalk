@@ -1,24 +1,27 @@
 package data.structure.nonlinear.tree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Node {
-	private Object element;
 	private Node parent;
-	private ArrayList children;
+	private List<Node> children;
 
-	//root node create
-	public Node(Object element) {
-		this.element = element;
-		this.parent = null;
-		this.children = new ArrayList();
+	public Node(Node parent) {
+		this.parent = parent;
+		this.children = new ArrayList<>();
+	}
+
+	public Node getParent() {
+		return parent;
 	}
 
 	public void setParent(Node parent) {
 		this.parent = parent;
 	}
 
-	public ArrayList getChildren() {
+	public List<Node> getChildren() {
 		return children;
 	}
+
 }

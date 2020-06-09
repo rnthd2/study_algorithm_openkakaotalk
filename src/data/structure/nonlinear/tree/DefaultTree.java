@@ -1,55 +1,49 @@
 package data.structure.nonlinear.tree;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class DefaultTree {
-
-	private static Node root;
-	private static ArrayList<Node> nodeList;
-
-	public DefaultTree(Object element) {
-		this.root = new Node(element);
-		this.nodeList = new ArrayList<>();
-	}
+	static ArrayList<Node> leafNodeList = new ArrayList<>();
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		//create root node
+		Node root = new Node(null);
 
-		int n = sc.nextInt();
-		if (n > 0 ) addRootNode(0);
+		//stage 2
+		Node node1 = new Node(root);
+		root.getChildren().add(node1);
 
-		String[] str = sc.next().split(" ");
-		for (int i = 0; i < n; i++) {
-			int a = Integer.valueOf(str[i]);
-			//todo getNode(a)가 루트라면?
-			addNode(getNode(a), i);
+		//stage 3
+		Node node2 = new Node(root);
+		root.getChildren().add(node2);
+
+		//stage 4
+		Node node3 = new Node(node1);
+		node1.getChildren().add(node3);
+
+		//stage 5
+		Node node4 = new Node(node1);
+		node1.getChildren().add(node4);
+
+		//stage 6(node2 remove)
+		root.getChildren().remove(node2);
+
+		//stage 7
+		int leafNodeNum = findLeafNode(root).size();
+		System.out.println(leafNodeNum);
+	}
+
+	static ArrayList<Node> findLeafNode(Node node){
+
+		for (Node child : node.getChildren()) {
+			if(child.getChildren().size() < 1){
+				leafNodeList.add(child);
+			}
+			else{
+				findLeafNode(child);
+			}
 		}
-
-		removeNode(getNode(sc.next()));
-
-	}
-	static void addRootNode(Object element){
-		new DefaultTree(element);
+		return leafNodeList;
 	}
 
-	static void addNode(Node parent, Object element){
-		Node node = new Node(element);
-		node.setParent(parent);
-		node.getChildren().add(node);
-		nodeList.add(node);
-	}
-
-	static void removeNode(Node node){
-		nodeList.remove(node);
-		node.getChildren().remove(node);
-	}
-
-	static Node getNode(Object element){
-		if((int)element == -1)
-			return root;
-		else {
-			return nodeList.get((int)element);
-		}
-	}
 }
