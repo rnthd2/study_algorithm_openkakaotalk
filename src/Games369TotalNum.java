@@ -20,7 +20,7 @@
  * 두 수의 범위는 1≤A≤B≤10의 100,000이다.
  * <p>
  * 출력
- * 박수치는 총 횟수를 20,150,523으로 나눈 나머지를 출력한 다.
+ * todo 박수치는 총 횟수를 20,150,523으로 나눈 나머지를 출력한 다.
  *
  * https://www.acmicpc.net/problem/10802
  */
@@ -36,18 +36,20 @@ public class Games369TotalNum {
 		int start = Integer.valueOf(in[0]);
 		int end = Integer.valueOf(in[1]);
 
-
-		for (int i = start; i <= end; i++) {
-			//i가 3의 배수인지 확인
-			if (!digits(i) && i % 3 == 0) {
-				num++;
+		if(start <= end && 1 <= start && end <= Math.pow(10,100000)){
+			for (int i = start; i <= end; i++) {
+				//i가 3의 배수인지 확인
+				if (!digits(i) && i % 3 == 0) {
+					num++;
+				}
 			}
-		}
 
-		System.out.println(num);
+			System.out.println(num);
+		}
 	}
 
 	//i의 각 자리수에 3,6,9가 포함되어있는지 확인
+	//todo 33이어도 한번
 	static boolean digits(int i){
 		String str = String.valueOf(i);
 		boolean result = false;

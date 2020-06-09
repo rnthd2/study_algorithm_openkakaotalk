@@ -1,4 +1,5 @@
-package data.structure.graph;
+package data.structure.linear.stack;
+
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -6,7 +7,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 //DFS 풀이
-class StackMaze extends Maze{
+class StackMaze extends Maze {
 	int row;
 	int col;
 	char val;

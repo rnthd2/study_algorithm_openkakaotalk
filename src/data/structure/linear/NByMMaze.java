@@ -1,4 +1,6 @@
-package data.structure.graph;
+package data.structure.linear;
+
+import com.sun.source.tree.Tree;
 
 import java.util.Scanner;
 

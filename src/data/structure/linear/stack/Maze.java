@@ -1,4 +1,4 @@
-package data.structure.graph;
+package data.structure.linear.stack;
 
 //todo Builder로 교체
 abstract class Maze {

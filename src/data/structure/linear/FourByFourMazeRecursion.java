@@ -1,4 +1,4 @@
-package data.structure.graph;
+package data.structure.linear;
 
 public class FourByFourMazeRecursion {
 

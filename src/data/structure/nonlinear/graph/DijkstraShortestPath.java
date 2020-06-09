@@ -1,4 +1,4 @@
-package data.structure.graph;
+package data.structure.nonlinear.graph;
 
 import java.util.*;
 
