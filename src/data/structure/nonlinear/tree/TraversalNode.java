@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class TraversalNode extends Node {
 
-	private boolean is_left_child;
-	private boolean is_right_child;
+	private int in_order_num;
 
 	private TraversalNode left_child;
 	private TraversalNode right_child;
@@ -17,8 +16,6 @@ public class TraversalNode extends Node {
 		super(null, element);
 		left_children = new ArrayList<>();
 		right_children = new ArrayList<>();
-		is_left_child = false;
-		is_right_child = false;
 	}
 
 	public TraversalNode getLeft_child() {
@@ -37,22 +34,6 @@ public class TraversalNode extends Node {
 		this.right_child = right_child;
 	}
 
-	public boolean isIs_left_child() {
-		return is_left_child;
-	}
-
-	public void setIs_left_child(boolean is_left_child) {
-		this.is_left_child = is_left_child;
-	}
-
-	public boolean isIs_right_child() {
-		return is_right_child;
-	}
-
-	public void setIs_right_child(boolean is_right_child) {
-		this.is_right_child = is_right_child;
-	}
-
 	public ArrayList<Object> getLeft_children() {
 		return left_children;
 	}
@@ -67,5 +48,13 @@ public class TraversalNode extends Node {
 
 	public void setRight_children(ArrayList<Object> right_children) {
 		this.right_children = right_children;
+	}
+
+	public int getIn_order_num() {
+		return in_order_num;
+	}
+
+	public void setIn_order_num(int in_order_num) {
+		this.in_order_num = in_order_num;
 	}
 }
