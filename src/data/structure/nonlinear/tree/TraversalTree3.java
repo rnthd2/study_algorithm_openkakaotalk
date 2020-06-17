@@ -2,7 +2,6 @@ package data.structure.nonlinear.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Stack;
 
 public class TraversalTree3 {
 
@@ -40,10 +39,12 @@ public class TraversalTree3 {
 					parent.setLeft_child(node);
 					node.setParent(parent);
 					end = nodeList.get(0).getIn_order_num();
+					break;
 				} else if(parent.getRight_children().contains(node.getElement())) {
 					parent.setRight_child(node);
 					node.setParent(parent);
 					start = nodeList.get(0).getIn_order_num()+1;
+					break;
 				} else {
 					System.out.println("non father! node is " + node.getElement());
 				}
@@ -63,6 +64,12 @@ public class TraversalTree3 {
 
 		left_in_order.removeIf(TraversalTree3::checkParent);
 		right_in_order.removeIf(TraversalTree3::checkParent);
+
+		for (Object o : left_in_order) {
+			for (TraversalNode traversalNode : nodeList) {
+				if (traversalNode.getElement() == o) left_in_order.remove(o);
+			}
+		}
 
 		node.getLeft_children().addAll(left_in_order);
 		node.getRight_children().addAll(right_in_order);
