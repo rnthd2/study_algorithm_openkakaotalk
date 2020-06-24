@@ -56,7 +56,7 @@ public class FindRoadEx {
 			list.add(new FindRoadNodeEx(i, nodeinfo[i][0], nodeinfo[i][1]));
 		}
 
-		// y를 기준으로 내림차순
+		// y를 기준으로 내림차순, 반대로하면 오름차순
 //		Collections.sort(list, new FindRoadComparator());
 		//세번째 방법
 //		Collections.sort(list, new Comparator<FindRoadNodeEx>() {
