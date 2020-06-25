@@ -1,11 +1,12 @@
 package data.structure.nonlinear.tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 class FindRoadNode {
-	Object element;
+	int element;
 	int x;
 	int y;
 	FindRoadNode left;
@@ -14,7 +15,7 @@ class FindRoadNode {
 	List<FindRoadNode> rightChildren;
 	FindRoadNode parent;
 
-	public FindRoadNode(Object element, int x, int y) {
+	public FindRoadNode(int element, int x, int y) {
 		this.element = element;
 		this.x = x;
 		this.y = y;
@@ -84,7 +85,7 @@ class FindRoadTree {
 		this.tree = tree;
 	}
 
-	public FindRoadNode createNode(Object element, int x, int y) {
+	public FindRoadNode createNode(int element, int x, int y) {
 		FindRoadNode node = new FindRoadNode(element, x, y);
 		if (tree == null) {
 			tree = new ArrayList<>();
@@ -94,7 +95,7 @@ class FindRoadTree {
 	}
 
 	//전위순회
-	ArrayList preOrderResult = new ArrayList();
+	ArrayList<Integer> preOrderResult = new ArrayList();
 	void preOrder(FindRoadNode node) {
 		if (node != null) {
 			preOrderResult.add(node.element);
@@ -104,17 +105,17 @@ class FindRoadTree {
 	}
 
 	//후위순회
-	ArrayList postOrderResult = new ArrayList();
+	ArrayList<Integer> postOrderResult = new ArrayList();
 	public void postOrder(FindRoadNode node) {
 		if (node != null) {
-			preOrder(node.left);
-			preOrder(node.right);
+			postOrder(node.left);
+			postOrder(node.right);
 			postOrderResult.add(node.element);
 		}
 	}
 
 	//중위순회
-	ArrayList inOrderResult = new ArrayList();
+	ArrayList<Integer> inOrderResult = new ArrayList();
 	public void inOrder(FindRoadNode node) {
 		if (node != null) {
 			inOrder(node.left);
@@ -127,7 +128,7 @@ class FindRoadTree {
 public class FindRoadMain {
 	public static void main(String[] args) {
 		int[][] nodeinfo = { { 5, 3 }, { 11, 5 }, { 13, 3 }, { 3, 5 }, { 6, 1 }, { 1, 3 }, { 8, 6 }, { 7, 2 }, { 2, 2 } };
-		System.out.println(solution(nodeinfo));
+		System.out.println(Arrays.deepToString(solution(nodeinfo)));
 	}
 	static List<FindRoadNode> nodeList = new ArrayList<>();
 	static FindRoadNode root = null;
@@ -159,25 +160,33 @@ public class FindRoadMain {
 			}
 		});
 
+		//root 설정
 		root = nodeList.get(0);
 		setChildrenAndParent(root, nodeList);
 
+		//조건에 따른 left right parent 설정
 		for (int i = 1; i < nodeList.size(); i++) {
 			setChildrenAndParent(nodeList.get(i), getParentChildren(nodeList.get(i)));
 		}
 
+		//전위 순회, 후위 순회
 		tree.preOrder(root);
 		tree.postOrder(root);
 
-
-		int[][] answer = {};
-//		System.out.println(Arrays.deepToString(answer));
-
-
-
-		return answer;
-
+		//arraylist 를 2차원 int
+		return new int[][]{getIntArrayByArrayList(tree.preOrderResult),getIntArrayByArrayList(tree.postOrderResult)};
 	}
+
+	// arraylist to int 배열
+	static int[] getIntArrayByArrayList(ArrayList<Integer> order){
+		int[] result = new int[nodeList.size()];
+		int size=0;
+		for(int temp : order){
+			result[size++] = temp;
+		}
+		return result;
+	}
+
 	static List<FindRoadNode> getParentChildren(FindRoadNode node) {
 		FindRoadNode parent = node.getParent();
 
