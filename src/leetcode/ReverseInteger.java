@@ -1,5 +1,6 @@
 package leetcode;
 
+//숫자 뒤집기
 public class ReverseInteger {
 	public static void main(String[] args) {
 		ReverseInteger reverseInteger = new ReverseInteger();
