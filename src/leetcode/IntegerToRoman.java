@@ -48,6 +48,7 @@ public class IntegerToRoman {
 
 		while(num > 0){
 			result += getRoman(num/(int)Math.pow(10,idx), idx*2);
+			//가장 큰 자릿수 값을 뺀 나머지 가져오기 ex. 4999 -> 999
 			num %= (int) Math.pow(10, idx--);
 		}
 
