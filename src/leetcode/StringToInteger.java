@@ -26,9 +26,10 @@ public class StringToInteger {
 				//양수, 음수 기호 확인
 				case '-' : negative = true;
 				//숫자인지 확인
-				case  :
+//				case  :
 			}
 		}
+		return 0;
 	}
 	public int test(String str) {
 
