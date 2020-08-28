@@ -13,11 +13,13 @@ public class RegularExpressionMatching {
 
 	public static void main(String[] args) {
 		RegularExpressionMatching regularExpressionMatching = new RegularExpressionMatching();
+		System.out.println(regularExpressionMatching.isMatch("ControlPanel", "Co.[a-z]o.*P[a-z]*"));
 		System.out.println(regularExpressionMatching.isMatch("aab", "c*a*b"));
 		System.out.println(regularExpressionMatching.isMatch("aa", "a*"));
 		System.out.println(regularExpressionMatching.isMatch("ab", ".*"));
 		System.out.println(regularExpressionMatching.isMatch("mississippi", "mis*is*p*."));
 		System.out.println(regularExpressionMatching.isMatch("mississippi", "mis*is*ip*."));
+
 	}
 
 	public boolean isMatch(String s, String p) {
