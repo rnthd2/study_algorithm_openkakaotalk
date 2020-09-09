@@ -19,8 +19,9 @@ public class CamelcaseMatching {
 //			List<Character> patterns = new ArrayList(Arrays.asList(pattern.toCharArray()));
 //			List<Character> chars = new ArrayList(Arrays.asList(s.toCharArray()));
 
-			pattern.split(Character.isUpperCase())
-			if(query.startsWith(pattern)
+//			pattern.split(Character.isUpperCase())
+//			if(query.startsWith(pattern)
+
 
 
 		}
