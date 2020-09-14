@@ -14,7 +14,7 @@ public class ValidParentheses {
 		System.out.println(isValid("]"));
 	}
 
-	//짝맞추기는 stack 으로...
+	//괄호 짝맞추기는 stack 으로...
 	public static boolean isValid(String s) {
 		Stack stack = new Stack();
 		for (char c : s.toCharArray()) {
