@@ -3,6 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+//모든 괄호 찾기
 public class GenerateParentheses {
 	public static void main(String[] args) {
 		System.out.println(GenerateParentheses.generateParenthesis(2));
