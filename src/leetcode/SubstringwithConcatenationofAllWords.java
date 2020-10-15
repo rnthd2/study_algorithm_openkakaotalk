@@ -44,7 +44,7 @@ public class SubstringwithConcatenationofAllWords {
 
         while (left < right && right <= s.length()) {
             String str = s.substring(left, right);
-            
+
             if(test(length, str, new ArrayList<>(Arrays.asList(words)))){
                 list.add(left);
             }
