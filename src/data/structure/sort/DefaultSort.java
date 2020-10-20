@@ -61,6 +61,7 @@ public class DefaultSort {
 			int point = 0; //자리수
 			for (int i = 0; i < list.size(); i++) {
 				point += (int) Math.log10(list.get(i)) + i;
+				//10의 제곱근 구하기
 				double a = Math.pow(10, i);
 				temp += list.get(i) * a;
 			}
