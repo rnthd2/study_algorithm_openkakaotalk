@@ -2,7 +2,7 @@ package leetcode;
 
 public class UniquePaths {
     public static void main(String[] args) {
-        System.out.println(uniquePaths(19,13));
+        System.out.println(uniquePaths(3,3));
     }
 
     /**
@@ -26,7 +26,7 @@ public class UniquePaths {
      * @param n
      * @return
      */
-    public static int uniquePaths(int m, int n) {
+    static int uniquePaths(int m, int n) {
         int down_count = m-1;
         int right_count = n-1;
 

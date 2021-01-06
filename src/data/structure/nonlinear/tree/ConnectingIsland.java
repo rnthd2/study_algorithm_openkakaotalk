@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 섬 연결하기
+ *
+ *
+ * https://programmers.co.kr/learn/courses/30/lessons/42861
+ */
 public class ConnectingIsland {
 	static List<ArrayList> sets = new ArrayList();
 
