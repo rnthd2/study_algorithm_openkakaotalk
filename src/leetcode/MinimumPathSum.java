@@ -13,7 +13,7 @@ public class MinimumPathSum {
         int rows = grid.length;
         int cols = grid[0].length;
         dp=new int[rows][cols];
-        Integer.MAX_VALUE
+
         return solution(grid, rows-1, cols-1);
 
     }
