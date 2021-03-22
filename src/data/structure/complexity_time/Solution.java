@@ -1,4 +1,4 @@
-package complexity.time;
+package data.structure.complexity_time;
 
 class Solution {
     public int search(int[] nums, int target) {
