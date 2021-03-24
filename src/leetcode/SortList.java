@@ -31,9 +31,13 @@ public class SortList {
     public static ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
 
-        ListNode pre = head;    //merge sort의 왼쪽
-        ListNode slow = head;   //merge sort의 오른쪽
-        ListNode fast = head;   //2개의 노드를 merge할 수 있도록 나눈다
+        ListNode pre = head;    //merge sort의 왼쪽의 끝
+        ListNode slow = head;   //merge sort의 오른쪽의 시작
+        /**
+         * middle 노드를 찾는 기준점
+         * pre와 slow가 중간지점에 왔을 때 while문 종료
+         */
+        ListNode fast = head;
 
         while (fast != null && fast.next != null) {
             pre = slow;
@@ -41,7 +45,10 @@ public class SortList {
             fast = fast.next.next;
         }
 
+        //왼쪽과 오른쪽을 구분하기 위해 왼쪽 이후 부분을 null 처리
         pre.next = null;
+
+        //재귀 merge
         return merge(sortList(head), sortList(slow));
     }
 
