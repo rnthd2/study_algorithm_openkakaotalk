@@ -105,18 +105,64 @@ public class RegexExample {
         matcherString(Pattern.compile("r.*"), "One ring to bring them all and in the darkness bind them");
         //r.*? : 문자r + 어떠한 문자도 상관없이 0개 이상인 문자열
         matcherString(Pattern.compile("r.*?"), "One ring to bring them all and in the darkness bind them");
+        //r.*? : 문자r + 어떠한 문자도 상관없이 1개 이상인 문자열
+        matcherString(Pattern.compile("r.+?"), "One ring to bring them all and in the darkness bind them");
+        //r.*? : 문자r + 어떠한 문자도 상관없이 0개 이상인 문자열
+        matcherString(Pattern.compile("r.??"), "One ring to bring them all and in the darkness bind them");
         //<div>.*</div> : 탐욕적인(Greedy) 수량
         matcherString(Pattern.compile("<div>.*</div>"), "<div>test</div><div>test2</div>");
         //<div>.*?</div> : 게으른(Lazy) 수량자
         matcherString(Pattern.compile("<div>.*?</div>"), "<div>test</div><div>test2</div>");
-
+        //\w : 단어(word:알파벳,숫자,언더라인'_')
+        matcherString(Pattern.compile("\\w"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //\w* : 단어(word:알파벳,숫자,언더라인'_')가 0개 이상인 문자열
+        matcherString(Pattern.compile("\\w*"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //[a-z]\w* : a부터 z까지 문자 + 단어(word:알파벳,숫자,언더라인'_')가 0개 이상인 문자열
+        matcherString(Pattern.compile("[a-z]\\w*"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //\w{5} : 단어(word:알파벳,숫자,언더라인'_')가 5개인 문자열
+        matcherString(Pattern.compile("\\w{5}"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //[A-z0-9_] : \w와 같은 정규표현식, 단어(word:알파벳,숫자,언더라인'_')
+        matcherString(Pattern.compile("[A-z0-9_]"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //\W : 단어(word:알파벳,숫자,언더라인'_')가 아닌 문자
+        matcherString(Pattern.compile("\\W"), "A1 B2 c3 d_4 e:5 ffGG77--__--");
+        //\s : 공백인 문자
+        matcherString(Pattern.compile("\\s"), "Ere iron was found or tree was hewn,    When young was mountain under moon; Ere ring was made, or wrought was woe,    It walked the forests long ago.");
+        //\S : 공백이 아닌 문자
+        matcherString(Pattern.compile("\\S"), "Ere iron was found or tree was hewn,    When young was mountain under moon; Ere ring was made, or wrought was woe,    It walked the forests long ago.");
+        //\d : digit의 약자, 0부터 9까지의 숫자인 문자
+        matcherString(Pattern.compile("\\d"), "Page 123; published: 1234 id=12#24@112");
+        //\D : 숫자가 아닌 문자
+        matcherString(Pattern.compile("\\D"), "Page 123; published: 1234 id=12#24@112");
+        //[0-9] : 0부터 9까지의 숫자인 문자
+        matcherString(Pattern.compile("[0-9]"), "Page 123; published: 1234 id=12#24@112");
+        //\b. : word boundary, 어떠한 문자도 상관없는 문자열들의 시작 문자
+        matcherString(Pattern.compile("\\b."), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //.\b : word boundary, 어떠한 문자도 상관없는 문자열들의 마지막 문자
+        matcherString(Pattern.compile(".\\b"), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //\B. : word boundary, 어떠한 문자도 상관없는 문자열들의 시작 문자가 아닌 문자
+        matcherString(Pattern.compile("\\B."), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //.\B : word boundary, 어떠한 문자도 상관없는 문자열들의 마지막 문자가 아닌 문자
+        matcherString(Pattern.compile(".\\B"), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //\A... : 첫 행의 시작으로부터 어떠한 문자도 상관없는 3개의 문자열
+        matcherString(Pattern.compile("\\A..."), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //...\Z : 마지막 행의 마지막으로부터 어떠한 문자도 상관없는 3개의 문자열
+        matcherString(Pattern.compile("...\\Z"), "Ere iron was found or tree was hewn,    When young was mountain under moon;");
+        //\w+(?=X) : 1개 이상인 word + 대문자 X 인 문자열에서 대문자 X를 제외한 문자열
+        matcherString(Pattern.compile("\\w+(?=X)"), "AAAX---aaax---111");
+        //\w+ : 1개 이상인 word 문자열
+        matcherString(Pattern.compile("\\w+(?=X)"), "AAAX---aaax---111");
+        //\w+(?=\w) : 1개 이상인 word + word를 포함한 문자열에서 마지막 word를 제외한 문자열
+        matcherString(Pattern.compile("\\w+(?=X)"), "AAAX---aaax---111");
+        //?=: : 긍정형 전방탐색, 앞에서부터 문자 : 가 올 때까지의 문자열에서 :를 제외한 문자열
+        //?<=\$ : 긍정형 후방탐색, 문자 $부터 시작하는 문자열에서 문자 $를 제외한 문자
+        //AAA(?!X) : 부정형 전방 탐색, 마지막 문자가 X 인 문자열을 제외한 문자열
+        matcherString(Pattern.compile("AAA(?!X)"), "AAAX---AAAAx");
+        //\b(?<!\$)\d+\b : 부정형 후방 탐색, 문자 $로 시작하는 문자열을 제외한 1개 이상의 숫자인 문자열
 
         /**
          * 정규식 테스트 가능
          * https://regexr.com/
          */
-
-
 
     }
 
