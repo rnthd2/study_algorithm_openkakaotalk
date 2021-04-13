@@ -162,6 +162,13 @@ public class RegexExample {
         /**
          * 정규식 테스트 가능
          * https://regexr.com/
+         *
+         * 인터렉티브하게 정규 표현식을 공부 할 수 있는 사이트
+         * http://regexone.com/
+         *
+         * 출처 : 생활코딩
+         * https://opentutorials.org/course/909/5143
+         *
          */
 
     }
