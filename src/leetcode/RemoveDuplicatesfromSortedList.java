@@ -2,12 +2,12 @@ package leetcode;
 
 public class RemoveDuplicatesfromSortedList {
     public static void main(String[] args) {
-//        ListNode l1_5 = new ListNode(3);
-//        ListNode l1_4 = new ListNode(3, l1_5);
-//        ListNode l1_3 = new ListNode(2, l1_4);
-//        ListNode l1_2 = new ListNode(1, l1_3);
-//        ListNode l1_1 = new ListNode(1, l1_2);
-//        deleteDuplicates(l1_1);
+        ListNode l1_5 = new ListNode(3);
+        ListNode l1_4 = new ListNode(3, l1_5);
+        ListNode l1_3 = new ListNode(2, l1_4);
+        ListNode l1_2 = new ListNode(1, l1_3);
+        ListNode l1_1 = new ListNode(1, l1_2);
+        deleteDuplicates(l1_1);
 
 
         ListNode l2_3 = new ListNode(1);
