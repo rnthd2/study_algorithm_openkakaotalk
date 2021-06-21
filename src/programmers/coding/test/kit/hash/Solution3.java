@@ -35,19 +35,5 @@ public class Solution3 {
         //모두 입지 않는 경우의 수를 뺀다
         return result-1;
     }
-    /**
-     * 팩토리얼
-     *
-     * @param n
-     * @return
-     */
-    static double factorial(int n) {
-        if(n == 0) {
-            return 1;
-        } else if(n <= 1) {
-            return n;
-        } else {
-            return factorial(n-1)*n;
-        }
-    }
+
 }
