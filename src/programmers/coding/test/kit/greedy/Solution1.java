@@ -17,6 +17,7 @@ import java.util.Arrays;
  *
  */
 public class Solution1 {
+
     public static void main(String[] args) {
         int n = 4;
         int[] lost = new int[]{3,1};
