@@ -1,8 +1,71 @@
 package programmers;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Utils {
+
+    /********************   converter   ********************/
+
+    /**
+     * 문자열을 int 배열로 변환
+     *
+     * @return
+     */
+    public static int[] convertStringToIntArray(String str){
+        return Arrays.asList(str.split("")).stream().mapToInt(Integer::parseInt).toArray();
+    }
+
+    /**
+     * 문자 배열을 int 배열로 변환
+     *
+     * @param array
+     * @return
+     */
+    public static int[] convertStringArrayToIntArray(String[] array){
+        return Arrays.stream(array).mapToInt(Integer::parseInt).toArray();
+    }
+
+    /**
+     * Integer 배열을 ArrayList로 변환
+     *
+     * @param array
+     * @return
+     */
+    public static List<Integer> convertIntegerArrayToList(Integer[] array){
+        return Arrays.asList(array);
+    }
+
+    /**
+     * ArrayList 를 Integer 배열로 변환
+     *
+     * @param list
+     * @return
+     */
+    public static Integer[] convertListToIntegerArray(List<Integer> list){
+        return null;
+    }
+
+    /**
+     * int 배열을 ArrayList로 변환
+     *
+     * @param array
+     * @return
+     */
+    public static ArrayList<Integer> convertIntArrayToList(int[] array){
+        return new ArrayList<>(Arrays.stream(array).boxed().collect(Collectors.toList()));
+    }
+
+    /**
+     * ArrayList 를 int 배열로 변환
+     *
+     * @param list
+     * @return
+     */
+    public static int[] convertListToIntArray(List<Integer> list){
+        return null;
+    }
+
 
     /********************   순열과 조합   ********************/
     /**
@@ -75,6 +138,12 @@ public class Utils {
                 return Integer.compare(order, s.order);
             }
         }
+    }
+
+    /********************   선언   ********************/
+    public void doDeclareFillIntArray(int size){
+        int[] array = new int[size];
+        Arrays.fill(array, 1);
     }
 
     /********************   문자열   ********************/
@@ -159,6 +228,9 @@ public class Utils {
         Collections.sort(list);
         //배열인 경우, Arrays.sort(list);
         list.forEach(s -> System.out.println(s.order + "," + s.reverse));
+
+        String[] strings = {"1", "2", "3"};
+        convertStringArrayToIntArray(strings);
 
     }
 }
