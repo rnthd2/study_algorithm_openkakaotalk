@@ -1,5 +1,3 @@
-package programmers;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -57,7 +55,7 @@ public class Utils {
     }
 
     /**
-     * ArrayList 를 int 배열로 변환
+     * todo ArrayList 를 int 배열로 변환
      *
      * @param list
      * @return
@@ -70,7 +68,7 @@ public class Utils {
     /********************   순열과 조합   ********************/
     /**
      * 모든 자리의 순열 만들기
-     * completeSearch/Solution2[소수 찾기]
+     * programmers/completeSearch/Solution2[소수 찾기]
      * "011"의 문자열로 만들 수 있는 자리수에 상관 없이 모든 숫자 찾기(0,1,10,11,110,101)
      *
      * @param prefix prefix ""
@@ -87,10 +85,38 @@ public class Utils {
         }
     }
 
+
+    /**
+     * 괄호 여부
+     * codility/training/Solution10
+     *
+     * @param s
+     * @return
+     */
+    public static boolean isValid(String s) {
+        Stack stack = new Stack();
+        for (char c : s.toCharArray()) {
+            switch (c){
+                case '(':
+                case '[':
+                case '{':
+                    stack.push(c);
+                    break;
+                case ')': if(stack.size() < 1 || !stack.peek().equals('('))
+                    return false; stack.pop(); break;
+                case ']': if(stack.size() < 1 || !stack.peek().equals('['))
+                    return false; stack.pop(); break;
+                case '}': if(stack.size() < 1 || !stack.peek().equals('{'))
+                    return false; stack.pop(); break;
+            }
+        }
+        return stack.isEmpty();
+    }
+
     /********************   정렬   ********************/
     /**
      * 배열 정렬하기
-     * hash/Solution2[전화번호 목록]
+     * programmers/hash/Solution2[전화번호 목록]
      * new String[]{"4","2","3"} 이나 new Integer[]{4,2,3}을 정렬하는 방법
      * Integer가 아닌 int 배열은 int[] 로 매개변수를 받아 사용해야한다.
      *
@@ -149,7 +175,7 @@ public class Utils {
     /********************   문자열   ********************/
     /**
      * 접두어 확인
-     * hash/Solution2[전화번호 목록]
+     * programmers/hash/Solution2[전화번호 목록]
      * "119"의 접두어가 "1195524421"에 있는지 확인하는 방법
      *
      * @param s1 확인 하고자 하는 문자열 "1195524421"
@@ -163,7 +189,7 @@ public class Utils {
     /********************   맵(map)   ********************/
     /**
      * map의 기본값 혹은 값 가져오기
-     * hash/Solution3[위장]
+     * programmers/hash/Solution3[위장]
      * map에 값이 없으면 defaultValue(0)를 가져오고 map에 값이 있으면 get(s)+1이 실행됨
      * map의 key(obj) 값이 몇 번 사용되었는지 찾고 싶을 때 사용
      *
@@ -177,7 +203,7 @@ public class Utils {
     /********************   기타   ********************/
     /**
      * 소수 찾기
-     * completeSearch/Solution2[소수 찾기]
+     * programmers/completeSearch/Solution2[소수 찾기]
      * 1과 0을 제외한 에라토스테네스의 체 알고리즘을 적용한 방법
      * cf. https://hak0205.tistory.com/10
      *
