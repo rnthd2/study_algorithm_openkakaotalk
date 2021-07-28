@@ -45,6 +45,10 @@ public class FunctionalInterface {
         test(m);
 
         test(() -> System.out.println("max functional interface call start!"));
+
+        //호출 가능
+        MaxFunctionalInterface.exceptionStaticMethod();
+        f1.exceptionDefaultMethod();
     }
 
     static void test(VoidFunctionalInterface m){
@@ -72,6 +76,12 @@ public class FunctionalInterface {
     @java.lang.FunctionalInterface
     interface MaxFunctionalInterface{
         public abstract int max(int a, int b);
+        public static void exceptionStaticMethod(){
+            System.out.println("except static method!");
+        }
+        public default void exceptionDefaultMethod(){
+            System.out.println("except default method!");
+        }
     }
     @java.lang.FunctionalInterface
     interface MinFunctionalInterface{
