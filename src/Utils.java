@@ -237,26 +237,46 @@ public class Utils {
     }
 
     public static void main(String[] args) {
-        System.out.println(arraySorting(new String[]{"4", "2", "3"}));
-        System.out.println(arraySorting(new Integer[]{4, 2, 3}));
-        System.out.println(isStartsWith("119", "1195524421"));
+//        System.out.println(arraySorting(new String[]{"4", "2", "3"}));
+//        System.out.println(arraySorting(new Integer[]{4, 2, 3}));
+//        System.out.println(isStartsWith("119", "1195524421"));
+//
+//        String[] ex = {"A", "B", "C", "A"};
+//        HashMap<Object, Integer> map = new HashMap<>();
+//        for(Object str : ex) putDefaultValueOrGetValueInMap(map,str);
+//        System.out.println(":: MAIN :: " + map);
+//
+//        List<Sorting> list = new ArrayList<>();
+//        Sorting sorting1 = new Sorting(1, 2);
+//        Sorting sorting2 = new Sorting(2, 1);
+//        list.add(sorting1);
+//        list.add(sorting2);
+//        Collections.sort(list);
+//        //배열인 경우, Arrays.sort(list);
+//        list.forEach(s -> System.out.println(s.order + "," + s.reverse));
+//
+//        String[] strings = {"1", "2", "3"};
+//        convertStringArrayToIntArray(strings);
 
-        String[] ex = {"A", "B", "C", "A"};
-        HashMap<Object, Integer> map = new HashMap<>();
-        for(Object str : ex) putDefaultValueOrGetValueInMap(map,str);
-        System.out.println(":: MAIN :: " + map);
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+        Iterator<Integer> iterator = list1.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+            iterator.remove();
+        }
+        Set<Integer> set1 = Set.of(1,2,3,4,5);
+        Iterator<Integer> iterator1 = set1.iterator();
+        while(iterator1.hasNext()){
+            System.out.println(iterator1.next());
+        }
+        Map<Integer, String> map1 = Map.of(1,"1",2,"2",3,"3",4,"4",5,"5");
+        Iterator<Map.Entry<Integer, String>> iterator2 = map1.entrySet().iterator();
+        while(iterator2.hasNext()){
+            Map.Entry<Integer, String> next = iterator2.next();
+            System.out.println(next.getKey() + ", " + next.getValue());
+        }
 
-        List<Sorting> list = new ArrayList<>();
-        Sorting sorting1 = new Sorting(1, 2);
-        Sorting sorting2 = new Sorting(2, 1);
-        list.add(sorting1);
-        list.add(sorting2);
-        Collections.sort(list);
-        //배열인 경우, Arrays.sort(list);
-        list.forEach(s -> System.out.println(s.order + "," + s.reverse));
-
-        String[] strings = {"1", "2", "3"};
-        convertStringArrayToIntArray(strings);
 
     }
 }
+
