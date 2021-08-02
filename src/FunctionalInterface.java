@@ -1,6 +1,15 @@
 import java.util.*;
 
+/**
+ * 람다의 정의 : 메서드를 간단한 식으로 표현한 익명객체
+ * 함수형 인터페이스 : 단 하나의 추상 메서드를 가지고 있는 인터페이스
+ *
+ * 람다식은 익명 객체이고, 함수형 인터페이스는 단 하나의 추상 메서드를 가지고 있기 때문에,
+ * 람다식을 함수형 인터페이스로 선언할 수 있다.
+ */
 public class FunctionalInterface {
+
+
     public static void main(String[] args) {
 
         Object object = new Object(){
